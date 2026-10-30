@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "soundcloud": {
+      "command": "/path/to/soundcloud-api-mcp-server/.venv/bin/soundcloud-mcp",
+      "args": ["mcp"]
+    }
+  }
+}
