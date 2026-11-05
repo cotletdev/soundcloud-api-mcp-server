@@ -1,8 +1,38 @@
-# SoundCloud API and MCP server, self-hosted
+# SoundCloud API and MCP server: connect SoundCloud to ChatGPT and Claude
 
 <!-- mcp-name: dev.cotlet/soundcloud -->
 
-A **SoundCloud API** and a **SoundCloud MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. All 10 SoundCloud tools we run in production at [Cotlet](https://cotlet.dev/integrations/soundcloud-api-mcp-server): your profile and any profile by link, your tracks with private ones and their secret links, track edits, comments, plays and likes for a time window, and your direct messages.
+**Yes, ChatGPT, Claude and other AI agents can work in your SoundCloud account.** That includes Cursor, Codex, OpenClaw and any MCP client, plus automations in n8n, Make and Zapier. Ask in plain words, and the AI edits your track titles, tags and descriptions, reads comments and messages, and reports plays and listeners. It shows you what it will do first and sends nothing to other people until you say so.
+
+This repo is the missing piece: 10 SoundCloud tools for AI assistants and scripts.
+
+## What you can ask
+
+> *Send me my plays, likes, comments and reposts for the last 7 days, and the five tracks with the most plays.*
+>
+> *Show me the newest comments on all my tracks and draft a short reply to each real fan. I will post them myself.*
+>
+> *Do I have unread messages? Summarise each thread in one line and tell me which ones need an answer.*
+>
+> *Have I written to soundcloud.com/harbor-lights before? If not, tell me their follower count and bio.*
+>
+> *Which of my tracks have no genre or no tags? Suggest both, and set them after I agree.*
+
+## Two ways to get it
+
+| | [Ready to use, at Cotlet](https://cotlet.dev/integrations/soundcloud-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=two-ways) | Run it yourself, this repo |
+|---|---|---|
+| For | artists, labels and managers | developers |
+| Setup | sign in to SoundCloud once, about 5 minutes, nothing to install | Python and a terminal |
+| Works in | ChatGPT and Claude apps, on your phone too, Cursor, Codex, OpenClaw, any MCP client, n8n, Make, Zapier, REST API | Claude Code, Claude Desktop, Cursor, Codex on your computer |
+| Runs | 24/7, your computer can be off | while your computer is on |
+| Price | 7 days free, no card | free |
+
+**[Start free at cotlet.dev →](https://cotlet.dev/signup?app=soundcloud&utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=top-button)**
+
+## Run it yourself
+
+A **SoundCloud API** and a **SoundCloud MCP server** you run on your own computer, in Python, on the session of your own Google Chrome. All 10 SoundCloud tools we run in production at [Cotlet](https://cotlet.dev/integrations/soundcloud-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=intro): your profile and any profile by link, your tracks with private ones and their secret links, track edits, comments, plays and likes for a time window, and your direct messages.
 
 SoundCloud does have an official API, but you need an Artist Pro subscription to register an app and get credentials, and its guide lists no insights for a period and no direct messages. This repo needs neither. It works on a free account and gives you:
 
@@ -10,11 +40,11 @@ SoundCloud does have an official API, but you need an Artist Pro subscription to
 - **REST API** on `http://127.0.0.1:8787/api/v1/soundcloud`, with OpenAPI docs at `/docs`. [Setup](#rest-api)
 - **Python**: `call("get_insights", window="DAYS_7")`, plus 7 ready scripts in [`examples/`](examples/).
 
-It is for technical people who want to run it themselves, **for noncommercial use only** ([license](#license)). If you want it running 24/7 on a server, kept working when SoundCloud changes its web app, for a team, a label or a business, use the [hosted version at cotlet.dev](https://cotlet.dev/integrations/soundcloud-api-mcp-server).
+Free for your own use, your own business included ([license](#license)).
 
 [![SoundCloud MCP server](https://img.shields.io/badge/SoundCloud%20MCP-10%20tools-6d4aef)](#all-10-tools)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-141318)](#requirements)
-[![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-141318)](LICENSE)
+[![License: Elastic 2.0](https://img.shields.io/badge/license-Elastic%202.0-141318)](https://github.com/cotletdev/soundcloud-api-mcp-server/blob/main/LICENSE)
 
 ```bash
 git clone https://github.com/cotletdev/soundcloud-api-mcp-server.git && cd soundcloud-api-mcp-server
@@ -26,6 +56,7 @@ claude mcp add soundcloud -- "$PWD/.venv/bin/soundcloud-mcp" mcp
 
 ## Contents
 
+- [Questions from SoundCloud users](#questions-from-soundcloud-users)
 - [How it works](#how-it-works)
 - [Requirements](#requirements)
 - [Install](#install)
@@ -40,6 +71,44 @@ claude mcp add soundcloud -- "$PWD/.venv/bin/soundcloud-mcp" mcp
 - [Self-hosted or hosted](#self-hosted-or-hosted)
 - [FAQ](#faq)
 - [License](#license)
+
+## Questions from SoundCloud users
+
+**Does SoundCloud have an API?**
+Yes, but registering an app and getting credentials needs an Artist Pro subscription (checked 30 Oct 2026). The API uploads tracks, edits track details, builds playlists and posts comments. Its guide lists no insights for a period and no direct messages. This repo and [Cotlet](https://cotlet.dev/integrations/soundcloud-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=faq-api) give you 10 SoundCloud tools as a REST API and an MCP server.
+
+**Can I get a SoundCloud API key?**
+SoundCloud gives app credentials only with Artist Pro. With Cotlet you get your own API key that works with your SoundCloud account, for scripts, n8n, Make, Zapier or any HTTP client. This repo needs no key: it runs on your computer, on your own SoundCloud session.
+
+**Is there an official ChatGPT integration for SoundCloud?**
+No. SoundCloud has no official ChatGPT or Claude connector. Cotlet is an unofficial one that works today, in the ChatGPT and Claude apps and in any AI agent that takes an MCP server.
+
+**How do I connect SoundCloud to ChatGPT?**
+Sign up at [cotlet.dev](https://cotlet.dev/signup?app=soundcloud&utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=faq-chatgpt), sign in to SoundCloud once in your Cloud Browser there, and add Cotlet to ChatGPT, following the steps in your account. Then ask ChatGPT about your SoundCloud like you would ask an assistant. ChatGPT needs a server on the internet, so this repo alone, running on your computer, does not connect to ChatGPT.
+
+**Can ChatGPT manage my SoundCloud tracks?**
+Yes, with Cotlet. It edits titles, tags and descriptions of your tracks after your OK, and reads your comments and messages so you know who to answer.
+
+**Can AI read my SoundCloud stats?**
+Yes, with Cotlet: plays, likes and listeners for a period, per track, in plain words.
+
+**Can I automate SoundCloud with Zapier, Make or n8n?**
+SoundCloud's own API needs an Artist Pro subscription to register an app. With Cotlet, n8n, Make and Zapier can edit tracks and read stats without one.
+
+**Can I use it from my phone?**
+Yes, with Cotlet: once it is set up, the ChatGPT and Claude apps on your phone can use SoundCloud for you.
+
+**Do I need to be technical?**
+For Cotlet, no: you sign in to SoundCloud and add Cotlet to ChatGPT or Claude, with step-by-step instructions in your account. This repo is for people who are fine with Python and a terminal.
+
+**Is my SoundCloud account safe?**
+Yes. Neither Cotlet nor this repo sees or stores your SoundCloud password. You sign in yourself, the way you always do, and the AI works on that signed-in session. Anything that reaches other people asks for your OK first: in Cotlet by default, here through your MCP client.
+
+**Is it free?**
+This repo is free, also in your own business. Cotlet is free for 7 days with no card, then one-time credit packs from $29, no subscription. [Pricing](https://cotlet.dev/pricing?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=faq-price).
+
+**I manage SoundCloud for several accounts or clients. Does that work?**
+Yes, with Cotlet. Each SoundCloud login gets its own connection. Write to [contact@cotlet.dev](mailto:contact@cotlet.dev) and tell us how many accounts you manage.
 
 ## How it works
 
@@ -344,22 +413,19 @@ The REST API answers `{"error": "<code>", "message": "..."}`. The MCP server ret
 
 ## Self-hosted or hosted
 
-| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/soundcloud-api-mcp-server) |
+| | This repo | [Cotlet, hosted](https://cotlet.dev/integrations/soundcloud-api-mcp-server?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=compare) |
 |---|---|---|
 | Tools | the same 10 | the same 10 |
 | Runs | on your computer, while it is on | in the cloud, 24/7 |
 | SoundCloud session | your Chrome, cookies in a local file | your own Cloud Browser in the EU, profile encrypted with AES-256-GCM |
 | When SoundCloud changes its web app | `git pull` once we have fixed it | fixed for you, every tool tested daily |
 | Works with | MCP clients on your machine, local scripts | Claude.ai and ChatGPT connectors, n8n, Make, Zapier, any HTTP client |
-| Who may use it | you, for noncommercial use | teams, labels, businesses, agencies |
+| Who may use it | you and your own business | you, teams, labels, businesses, agencies |
 | Price | free | free 7-day trial with 2,000 credits, no card; then one-time packs from $29 for 5,000 credits |
 
 On the hosted version a successful call uses 10 credits, failed calls are free, and the Cloud Browser uses 50 credits a day while it has an app enabled for agents. [Full pricing](https://cotlet.dev/pricing).
 
 ## FAQ
-
-**Does SoundCloud have an official API?**
-Yes, but registering an app and getting credentials needs an Artist Pro subscription (checked 30 Oct 2026). The API uploads tracks, edits track details, builds playlists and posts comments. Its guide lists no insights for a period and no direct messages. Details: [cotlet.dev/integrations/soundcloud-api-mcp-server](https://cotlet.dev/integrations/soundcloud-api-mcp-server).
 
 **Is there a SoundCloud MCP server for Claude, ChatGPT or Cursor?**
 Yes, this one runs on your machine: `soundcloud-mcp mcp` for Claude Code, Claude Desktop, Cursor and Codex. ChatGPT and Claude.ai connectors need a public HTTPS URL, which the [hosted SoundCloud MCP server](https://cotlet.dev/integrations/soundcloud-api-mcp-server) gives you.
@@ -385,21 +451,18 @@ Technically yes, with `SOUNDCLOUD_AUTH_TOKEN` or a `session.json` copied from yo
 **Will my SoundCloud account get banned?**
 Requests carry Chrome's fingerprint and go out one at a time, as you would click. Nobody can promise a platform never acts. Keep to your normal use.
 
-**Can I use it for my label or for artists I manage?**
-No. The license allows noncommercial use only, and a label, a management company or client work counts as business use. For that, use [Cotlet](https://cotlet.dev) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
-
-**Can I use the code for anything I like?**
-No. The source is public, but the license allows noncommercial use only: no business use.
+**Can I change the code or offer it to my clients?**
+You may change it and use it in your own business. You may not offer it to others as a hosted or managed service. For client work, use [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=faq-clients) or write to [contact@cotlet.dev](mailto:contact@cotlet.dev).
 
 **A tool broke or I need another one.**
 [Open an issue](https://github.com/cotletdev/soundcloud-api-mcp-server/issues) with the tool name and the error message.
 
 ## License
 
-[PolyForm Noncommercial License 1.0.0](LICENSE). In short:
+[Elastic License 2.0](https://github.com/cotletdev/soundcloud-api-mcp-server/blob/main/LICENSE). In short:
 
-- **Allowed:** noncommercial use: you, for your own personal purposes with your own SoundCloud account, or a charity, school, public research or government body. Changing the code, and sharing it under the same license.
-- **Not allowed:** any commercial use, your own business included; client work; selling or offering it, or a service built on it.
+- **Allowed:** using it for yourself and in your own business, free. Changing the code and sharing it under the same license.
+- **Not allowed:** offering it to others as a hosted or managed service, removing the license notices, getting around its limits.
 
 ---
 
@@ -412,4 +475,4 @@ No. The source is public, but the license allows noncommercial use only: no busi
   </a>
 </p>
 
-Maintained by [Cotlet](https://cotlet.dev) ([@cotletdev](https://x.com/cotletdev)). SoundCloud is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by SoundCloud.
+Maintained by [Cotlet](https://cotlet.dev?utm_source=github&utm_medium=readme&utm_campaign=soundcloud&utm_content=footer) ([@cotletdev](https://x.com/cotletdev)). SoundCloud is a trademark of its owner. This project is unofficial and not affiliated with, endorsed or sponsored by SoundCloud.
